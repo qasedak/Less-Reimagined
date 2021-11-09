@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <?php
-if (dayOrNight($_SERVER['REMOTE_ADDR']) == False) {
+if (isNight($_SERVER['REMOTE_ADDR']) == True) {
 	echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
 }
 ?>
