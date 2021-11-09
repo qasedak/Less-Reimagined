@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <?php
-if (isNight($_SERVER['REMOTE_ADDR']) == True) {
+if (isNight($_SERVER['REMOTE_ADDR'])) {
 	echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
 }
 ?>
@@ -109,7 +109,7 @@ if (isNight($_SERVER['REMOTE_ADDR']) == True) {
 			<?php else : ?>
 				
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
+					<h1 class="404"><?php $noPostErr = 'Nothing posted yet'; esc_html_e( $noPostErr, 'moreOrLess' ); ?></h1>
 				</article>
 
 			<?php endif; ?>
@@ -167,7 +167,7 @@ if (isNight($_SERVER['REMOTE_ADDR']) == True) {
 			<?php else : ?>
 				
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( $noPostErr, 'moreOrLess' ); ?></h1>
 				</article>
 
 			<?php endif; ?>
@@ -204,7 +204,7 @@ if (isNight($_SERVER['REMOTE_ADDR']) == True) {
 			<?php else : ?>
 				
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( $noPostErr, 'moreOrLess' ); ?></h1>
 				</article>
 
 			<?php endif; ?>
@@ -220,7 +220,7 @@ if (isNight($_SERVER['REMOTE_ADDR']) == True) {
 	if( is_404()) {
 ?>
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( $noPostErr, 'moreOrLess' ); ?></h1>
 				</article>
 	<?php } // end is_404(); ?>
 
