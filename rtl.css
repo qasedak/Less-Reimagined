@@ -17,7 +17,7 @@ table,
 ol,
 ul,
 header #brand h1 {
-  font-family: tahoma;
+  font-family: tahoma, sans-serif;
 }
 span,
 h1,
