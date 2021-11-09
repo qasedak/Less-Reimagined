@@ -1,0 +1,25 @@
+body, button, input, select {
+    background: #0d0d0d !important;
+}
+article .the-content p {
+    color: #e1e1e1 !important;
+}
+article .title a {
+    color: #fff !important;
+}
+header #brand h1 {
+    color: #d4d4d4 !important;
+}
+header #brand h1 a {
+    color: #fff !important;
+}
+header #brand h1 span {
+    color: #d4d4d4 !important;
+}
+.site-info.container {
+    color: #5d5c5c;
+}
+.error {
+    text-align: center;
+    color: #878787;
+}

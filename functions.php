@@ -5,7 +5,7 @@
 /*-----------------------------------------------------------------------------------*/
 add_action( 'after_setup_theme', 'less_theme_setup' );
 function less_theme_setup(){
-    load_theme_textdomain( 'less-reloaded', get_template_directory() . '/languages' );
+    load_theme_textdomain( 'moreOrLess', get_template_directory() . '/languages' );
 }
 
 // Define the version as a constant so we can easily replace it throughout the theme
@@ -26,7 +26,7 @@ if ( ! isset( $content_width ) ) $content_width = 900;
 /*-----------------------------------------------------------------------------------*/
 register_nav_menus( 
 	array(
-		'primary'	=>	__( 'Primary Menu', 'less-reloaded' ),
+		'primary'	=>	__( 'Primary Menu', 'moreOrLess' ),
 	)
 );
 
@@ -61,3 +61,40 @@ function less_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'less_pingback_header' );
+
+/*-----------------------------------------------------------------------------------*/
+/* Dark theme fuctions - use: $_SERVER['REMOTE_ADDR']
+/*-----------------------------------------------------------------------------------*/
+
+function FILTER_FLAG_NO_LOOPBACK_RANGE($value) {
+    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? $value :
+        (((ip2long($value) & 0xff000000) == 0x7f000000) ? FALSE : $value);
+}
+
+function dayOrNight(string $ip = ""): bool
+{
+	if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)  && filter_var($ip, FILTER_CALLBACK, array('options' => 'FILTER_FLAG_NO_LOOPBACK_RANGE')) && $ip != "::1") {
+		// ip is valid
+		$apiReq = file_get_contents("https://freeipapi.com/api/json/" . $ip);
+		$ipInfo = json_decode($apiReq, true)["timeZone"];
+		if (!empty($ipInfo) || $ipInfo != "-") {
+			$usersTimezone = $ipInfo;
+		} else {
+			//WP time-zone
+			$usersTimezone = wp_timezone();
+		}
+		$date = new DateTime('now', new DateTimeZone($usersTimezone));
+		$currentTime =  $date->format('H:i:s');
+		if (strtotime($currentTime) >= strtotime("18:00:00") || strtotime($currentTime) <= strtotime("5:00:00")
+		) {
+			// it's night
+			return false;
+		} else {
+			// it's day
+			return true;
+		}
+	} else {
+		// ip is not valid
+		return true;
+	}
+}

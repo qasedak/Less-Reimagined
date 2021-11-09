@@ -84,8 +84,8 @@ msgid "and"
 msgstr "and"
 
 #: ../index.php:226
-msgid "Less Reloaded by Morteza Geransayeh"
-msgstr "Less Reloaded by Morteza Geransayeh"
+msgid "More or Less by Mohammad Anbarestany"
+msgstr "More or Less by Mohammad Anbarestany"
 
 #~ msgid "LESS by Jared Erickson"
 #~ msgstr "LESS by Jared Erickson"

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<?php
+if (dayOrNight($_SERVER['REMOTE_ADDR']) == False) {
+	echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
+}
+?>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 
@@ -79,7 +84,7 @@
 						
 						<div class="the-content">
 							<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<?php the_content( __( 'Continue...', 'less-reloaded' ) ); ?>
+								<?php the_content( __( 'Continue...', 'moreOrLess' ) ); ?>
 								
 								<?php wp_link_pages(); ?>
 							</div>
@@ -96,15 +101,15 @@
 				
 				<!-- pagintation -->
 				<div id="pagination" class="clearfix">
-					<div class="past-page"><?php previous_posts_link( __( 'Newer &raquo;', 'less-reloaded' ) ); ?></div>
-					<div class="next-page"><?php next_posts_link( __( ' &laquo; Older', 'less-reloaded' ) ); ?></div>
+					<div class="past-page"><?php previous_posts_link( __( 'Newer &raquo;', 'moreOrLess' ) ); ?></div>
+					<div class="next-page"><?php next_posts_link( __( ' &laquo; Older', 'moreOrLess' ) ); ?></div>
 				</div><!-- pagination -->
 
 
 			<?php else : ?>
 				
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'less-reloaded' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
 				</article>
 
 			<?php endif; ?>
@@ -131,14 +136,14 @@
 						<div class="post-meta">
 							<?php if( comments_open() ) : ?>
 								<span class="comments-link">
-									<?php comments_popup_link( __( 'Comment', 'less-reloaded' ), __( '1 Comment', 'less-reloaded' ), __( '% Comments', 'less-reloaded' ) ); ?>
+									<?php comments_popup_link( __( 'Comment', 'moreOrLess' ), __( '1 Comment', 'moreOrLess' ), __( '% Comments', 'moreOrLess' ) ); ?>
 								</span>
 							<?php endif; ?>
 						
 						</div><!--/post-meta -->
 						
 						<div class="the-content">
-							<?php the_content( __( 'Continue...', 'less-reloaded' ) ); ?>
+							<?php the_content( __( 'Continue...', 'moreOrLess' ) ); ?>
 							
 							<?php wp_link_pages(); ?>
 						</div><!-- the-content -->
@@ -162,7 +167,7 @@
 			<?php else : ?>
 				
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'less-reloaded' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
 				</article>
 
 			<?php endif; ?>
@@ -199,7 +204,7 @@
 			<?php else : ?>
 				
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'less-reloaded' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
 				</article>
 
 			<?php endif; ?>
@@ -215,7 +220,7 @@
 	if( is_404()) {
 ?>
 				<article class="post error">
-					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'less-reloaded' ); ?></h1>
+					<h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'moreOrLess' ); ?></h1>
 				</article>
 	<?php } // end is_404(); ?>
 
@@ -232,9 +237,9 @@
 
 <footer class="site-footer" role="contentinfo">
 	<div class="site-info container">
-		<a href="https://wordpress.org/" title="<?php esc_html_e( 'A Semantic Personal Publishing Platform', 'less-reloaded'); ?>" rel="generator"><?php esc_html_e( 'Proudly powered by WordPress', 'less-reloaded'); ?></a>
-		<span class="sep"> <?php esc_html_e( 'and', 'less-reloaded' ); ?> </span>
-		<?php esc_html_e( 'Less Reloaded by Morteza Geransayeh', 'less-reloaded'); ?>
+		<a href="https://wordpress.org/" title="<?php esc_html_e( 'A Semantic Personal Publishing Platform', 'moreOrLess'); ?>" rel="generator"><?php esc_html_e( 'Proudly powered by WordPress', 'moreOrLess'); ?></a>
+		<span class="sep"> <?php esc_html_e( 'and', 'moreOrLess' ); ?> </span>
+		<?php esc_html_e( 'More or Less by Mohammad Anbarestany', 'moreOrLess'); ?>
 	</div><!-- .site-info -->
 </footer><!-- #colophon .site-footer -->
 
