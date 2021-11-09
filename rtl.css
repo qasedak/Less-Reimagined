@@ -140,12 +140,6 @@ article .meta .post-categories li {
   left: 0;
   right: -50px;
 }
-#pagination .past-page {
-    float: right;
-}
-#pagination .next-page {
-    float: left;
-}
 .site-info {
   direction: rtl;
 }
