@@ -19,7 +19,9 @@ add_theme_support( 'automatic-feed-links' );
 /*-----------------------------------------------------------------------------------*/
 /* Add Content width
 /*-----------------------------------------------------------------------------------*/
-if ( ! isset( $content_width ) ) $content_width = 900;
+if ( ! isset( $content_width ) ) {
+	$content_width = 900;
+}
 
 /*-----------------------------------------------------------------------------------*/
 /* register main menu
@@ -66,12 +68,12 @@ add_action( 'wp_head', 'less_pingback_header' );
 /* Dark theme fuctions - use: $_SERVER['REMOTE_ADDR']
 /*-----------------------------------------------------------------------------------*/
 
-function FILTER_FLAG_NO_LOOPBACK_RANGE($value) {
-    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? $value :
-        (((ip2long($value) & 0xff000000) == 0x7f000000) ? FALSE : $value);
+function FILTER_FLAG_NO_LOOPBACK_RANGE($value)
+{
+	return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? $value : (((ip2long($value) & 0xff000000) == 0x7f000000) ? FALSE : $value);
 }
 
-function dayOrNight(string $ip = ""): bool
+function isNight(string $ip = ""): bool
 {
 	if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)  && filter_var($ip, FILTER_CALLBACK, array('options' => 'FILTER_FLAG_NO_LOOPBACK_RANGE')) && $ip != "::1") {
 		// ip is valid
@@ -85,16 +87,9 @@ function dayOrNight(string $ip = ""): bool
 		}
 		$date = new DateTime('now', new DateTimeZone($usersTimezone));
 		$currentTime =  $date->format('H:i:s');
-		if (strtotime($currentTime) >= strtotime("18:00:00") || strtotime($currentTime) <= strtotime("5:00:00")
-		) {
-			// it's night
-			return false;
-		} else {
-			// it's day
-			return true;
-		}
+		return (strtotime($currentTime) >= strtotime("18:00:00") || strtotime($currentTime) <= strtotime("5:00:00")); // output True for Night time
 	} else {
 		// ip is not valid
-		return true;
+		return false;
 	}
 }
