@@ -73,23 +73,31 @@ function FILTER_FLAG_NO_LOOPBACK_RANGE($value)
 	return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? $value : (((ip2long($value) & 0xff000000) == 0x7f000000) ? FALSE : $value);
 }
 
-function isNight(string $ip = ""): bool
+function isNight(string $ip = "", string $sysColor = ""): bool
 {
-	if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)  && filter_var($ip, FILTER_CALLBACK, array('options' => 'FILTER_FLAG_NO_LOOPBACK_RANGE')) && $ip != "::1") {
-		// ip is valid
-		$apiReq = file_get_contents("https://freeipapi.com/api/json/" . $ip);
-		$ipInfo = json_decode($apiReq, true)["timeZone"];
-		if (!empty($ipInfo) || $ipInfo != "-") {
-			$usersTimezone = $ipInfo;
-		} else {
-			//WP time-zone
-			$usersTimezone = wp_timezone();
-		}
-		$date = new DateTime('now', new DateTimeZone($usersTimezone));
-		$currentTime =  $date->format('H:i:s');
-		return (strtotime($currentTime) >= strtotime("18:00:00") || strtotime($currentTime) <= strtotime("5:00:00")); // output True for Night time
-	} else {
-		// ip is not valid
-		return false;
-	}
+    if ($sysColor == "")
+    {
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)  && filter_var($ip, FILTER_CALLBACK, array('options' => 'FILTER_FLAG_NO_LOOPBACK_RANGE')) && $ip != "::1") {
+            // ip is valid
+            $apiReq = file_get_contents("https://freeipapi.com/api/json/" . $ip);
+            $ipInfo = json_decode($apiReq, true)["timeZone"];
+            if (!empty($ipInfo) || $ipInfo != "-") {
+                $usersTimezone = $ipInfo;
+            } else {
+                //WP time-zone
+                $usersTimezone = wp_timezone();
+            }
+            $date = new DateTime('now', new DateTimeZone($usersTimezone));
+            $currentTime =  $date->format('H:i:s');
+            return (strtotime($currentTime) >= strtotime("18:00:00") || strtotime($currentTime) <= strtotime("5:00:00")); // outputs True for Night time and false for day
+        } else {
+            // ip is not valid, fallback
+            return false;
+        }
+    } else if ($sysColor == "dark") //Browser dark mode state passed
+    {
+        return true; // it's night
+    } else {
+        return false; // fallback (day)
+    }
 }

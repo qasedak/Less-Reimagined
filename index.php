@@ -2,8 +2,10 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-	<?php
-	if (isNight($_SERVER['REMOTE_ADDR'])) {
+    <?php
+	$color_scheme = $_COOKIE["color_scheme"] ?? false;
+    if ($color_scheme === false) $color_scheme = 'light';  // fallback
+	if (isNight($_SERVER['REMOTE_ADDR'],$color_scheme)) {
 		echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
 	}
 	?>
@@ -59,7 +61,7 @@
 				<?php
 				/*-----------------------------------------------------------------------------------*/
 				/* Start Home loop
-	/*-----------------------------------------------------------------------------------*/
+	            /*-----------------------------------------------------------------------------------*/
 
 				if (is_home() || is_archive()) {
 
@@ -126,7 +128,7 @@
 				<?php
 				/*-----------------------------------------------------------------------------------*/
 				/* Start Single loop
-	/*-----------------------------------------------------------------------------------*/
+	            /*-----------------------------------------------------------------------------------*/
 
 				if (is_single()) {
 				?>
@@ -225,7 +227,7 @@
 				<?php
 				/*-----------------------------------------------------------------------------------*/
 				/* Start 404 Page
-	/*-----------------------------------------------------------------------------------*/
+	            /*-----------------------------------------------------------------------------------*/
 
 				if (is_404()) {
 				?>
@@ -255,7 +257,23 @@
 	</footer><!-- #colophon .site-footer -->
 
 	<?php wp_footer(); ?>
-
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script>
+    <script>
+        // code to set the `color_scheme` cookie
+        var $color_scheme = Cookies.get("color_scheme");
+        function get_color_scheme() {
+            return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+        }
+        function update_color_scheme() {
+            Cookies.set("color_scheme", get_color_scheme());
+        }
+        // read & compare cookie `color-scheme`
+        if ((typeof $color_scheme === "undefined") || (get_color_scheme() != $color_scheme))
+            update_color_scheme();
+        // detect changes and change the cookie
+        if (window.matchMedia)
+            window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme );
+    </script>
 </body>
 
 </html>
