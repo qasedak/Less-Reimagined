@@ -6,9 +6,3 @@ The Less Reloaded theme but not Less any more :D
 
 Less Reloaded Theme is based on moreOrLess Theme by Morteza Gransayeh , GPL License - https://github.com/man4toman/Less-Reloaded
 This theme, like WordPress, is licensed under the GPL.
-
-== Changelog ==
-
-= 1.0 =
-* Initial release
-* Automatic Dark mode based on user's time-zone
