@@ -3,14 +3,39 @@
 /*-----------------------------------------------------------------------------------*/
 /* Load Theme textdomain
 /*-----------------------------------------------------------------------------------*/
-add_action( 'after_setup_theme', 'less_theme_setup' );
-function less_theme_setup(){
+add_action( 'after_setup_theme', 'moreOrLess_theme_setup' );
+function moreOrLess_theme_setup(){
     load_theme_textdomain( 'moreOrLess', get_template_directory() . '/languages' );
 }
 
-// Define the version as a constant so we can easily replace it throughout the theme
-define( 'LESS_VERSION', 1.1 );
+// Define the version as a constant, so we can easily replace it throughout the theme
+const LESS_VERSION = 1.0;
 add_theme_support( 'title-tag' );
+
+/*-----------------------------------------------------------------------------------*/
+/* Custom Logo - <span> has removed from has_custom_logo() output.
+/*-----------------------------------------------------------------------------------*/
+function moreOrLess_custom_logo_setup() {
+    $defaults = array(
+        'height'               => 100,
+        'width'                => 100,
+        'flex-height'          => true,
+        'flex-width'           => true,
+        'header-text'          => array( 'site-title', 'site-description' ),
+        'unlink-homepage-logo' => true,
+    );
+
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'moreOrLess_custom_logo_setup' );
+
+function change_custom_logo( $html ) {
+    $html = str_replace( '<span class="custom-logo-link">', '', $html );
+    $html = str_replace( '</span>', '', $html );
+    return str_replace('custom-logo', 'avatar avatar-100 photo', $html);
+}
+add_filter( 'get_custom_logo', 'change_custom_logo' );
+
 /*-----------------------------------------------------------------------------------*/
 /* Add Rss to Head
 /*-----------------------------------------------------------------------------------*/

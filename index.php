@@ -31,9 +31,13 @@
 
 			<div class="gravatar">
 				<?php
-				// grab admin email and their photo
-				$admin_email = get_option('admin_email');
-				echo get_avatar($admin_email, 100);
+                if ( has_custom_logo() ) {
+                    the_custom_logo();
+                } else {
+                    // grab admin email and their photo
+                    $admin_email = get_option('admin_email');
+                    echo get_avatar($admin_email, 100);
+                }
 				?>
 			</div>
 			<!--/ author -->
