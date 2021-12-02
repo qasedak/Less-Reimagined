@@ -152,7 +152,6 @@ blockquote:after,
 q:before,
 q:after {
   content: '';
-  content: none;
 }
 table {
   border-spacing: 0;
@@ -231,7 +230,6 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   border: 1px solid #dddddd;
-  border-color: #ccc #ccc #bbb #ccc;
   border-radius: 3px;
   background: #e6e6e6;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
@@ -245,7 +243,6 @@ input[type="submit"] {
   /* Corrects inability to style clickable 'input' types in iOS */
 
   font-size: 12px;
-  font-size: 1.4rem;
   line-height: 1;
   padding: 1.12em 1.5em 1em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -339,9 +336,8 @@ select {
   margin: 0;
   background: #ffffff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 26.64px;
+  line-height: 27px;
   font-size: 18px;
-  font-size: 1.8rem;
 }
 /* typography
 -------------------------------------------------------------- */
@@ -356,24 +352,20 @@ h6 {
   font-family: "Arvo", Georgia, serif;
 }
 h1 {
-  line-height: 71.03999999999999px;
+  line-height: 71px;
   font-size: 48px;
-  font-size: 4.8rem;
 }
 h2 {
-  line-height: 50.32px;
+  line-height: 50px;
   font-size: 34px;
-  font-size: 3.4rem;
 }
 h3 {
-  line-height: 41.44px;
+  line-height: 41px;
   font-size: 28px;
-  font-size: 2.8rem;
 }
 h4 {
-  line-height: 26.64px;
+  line-height: 27px;
   font-size: 18px;
-  font-size: 1.8rem;
 }
 hr {
   background-color: #ccc;
@@ -424,7 +416,6 @@ pre {
   background: #eee;
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
-  font-size: 1.5rem;
   line-height: 1.6;
   margin-bottom: 1.6em;
   padding: 1.6em;
@@ -488,9 +479,8 @@ header #brand h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 900;
   color: #565656;
-  line-height: 23.68px;
+  line-height: 24px;
   font-size: 16px;
-  font-size: 1.6rem;
   margin: 0;
   padding: 0;
   text-transform: uppercase;
@@ -535,9 +525,8 @@ article {
 }
 article .title {
   color: #404040;
-  line-height: 56.24px;
+  line-height: 56px;
   font-size: 38px;
-  font-size: 3.8rem;
   font-weight: 700;
 }
 article .title a {
@@ -570,11 +559,10 @@ article .the-content img {
   height: auto;
 }
 article .meta {
-  line-height: 14.8px;
+  line-height: 15px;
   font-size: 10px;
-  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: .9px;
+  letter-spacing: 1px;
 }
 article .meta div {
   float: left;
@@ -717,8 +705,7 @@ html[xmlns] .clearfix {
 .gallery-caption {
 	color: #666;
 	font-size: 13px;
-	font-size: 0.8125rem;
-	font-style: italic;
+  font-style: italic;
 	margin-bottom: 1.5em;
 	max-width: 100%;
 }
@@ -767,8 +754,7 @@ html[xmlns] .clearfix {
 	clip: auto !important;
 	color: #21759b;
 	display: block;
-	font-size: 14px;
-	font-size: 0.875rem;
+  font-size: 0.875rem;
 	font-weight: 700;
 	height: auto;
 	left: 5px;
