@@ -100,7 +100,7 @@ function FILTER_FLAG_NO_LOOPBACK_RANGE($value)
 
 function isNight(string $ip = "", string $sysColor = ""): bool
 {
-    if ($sysColor == "")
+    if ($sysColor == "" || $sysColor == false)
     {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)  && filter_var($ip, FILTER_CALLBACK, array('options' => 'FILTER_FLAG_NO_LOOPBACK_RANGE')) && $ip != "::1") {
             // ip is valid

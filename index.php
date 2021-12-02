@@ -4,7 +4,6 @@
 <head>
     <?php
 	$color_scheme = $_COOKIE["color_scheme"] ?? false;
-    if ($color_scheme === false) $color_scheme = 'light';  // fallback
 	if (isNight($_SERVER['REMOTE_ADDR'],$color_scheme)) {
 		echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
         echo '<meta name="theme-color" content="#0d0d0d">';
