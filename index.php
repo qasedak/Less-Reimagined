@@ -7,7 +7,9 @@
 	if (isNight($_SERVER['REMOTE_ADDR'],$color_scheme)) {
 		echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
         echo '<meta name="theme-color" content="#0d0d0d">';
-	}
+	} else {
+        echo '<meta name="theme-color" content="#D0D0D0FF">';
+    }
 	?>
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<meta name="viewport" content="width=device-width" />
