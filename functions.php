@@ -98,6 +98,9 @@ function FILTER_FLAG_NO_LOOPBACK_RANGE($value)
 	return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? $value : (((ip2long($value) & 0xff000000) == 0x7f000000) ? FALSE : $value);
 }
 
+/**
+ * @throws Exception
+ */
 function isNight(string $ip = "", string $sysColor = ""): bool
 {
     if (empty($sysColor) || $sysColor == false)
