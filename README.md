@@ -1,4 +1,4 @@
-![more or less](http://macse.byethost16.com/wp-content/themes/less/screenshot.png)
+
 The Less Reloaded theme but not Less any more :D
 
 
