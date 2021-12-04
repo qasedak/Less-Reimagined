@@ -96,7 +96,7 @@
 
 								<div class="the-content">
 									<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-										<?php the_content(__('Continue...', 'moreOrLess')); ?>
+										<?php the_content(__('Continue...', 'lessReimagined')); ?>
 
 										<?php wp_link_pages(); ?>
 									</div>
@@ -113,8 +113,8 @@
 
 						<!-- pagintation -->
 						<div id="pagination" class="clearfix">
-							<div class="past-page"><?php previous_posts_link(__('Newer &raquo;', 'moreOrLess')); ?></div>
-							<div class="next-page"><?php next_posts_link(__(' &laquo; Older', 'moreOrLess')); ?></div>
+							<div class="past-page"><?php previous_posts_link(__('Newer &raquo;', 'lessReimagined')); ?></div>
+							<div class="next-page"><?php next_posts_link(__(' &laquo; Older', 'lessReimagined')); ?></div>
 						</div><!-- pagination -->
 
 
@@ -122,7 +122,7 @@
 
 						<article class="post error">
 							<h1 class="404"><?php $noPostErr = 'Nothing posted yet';
-											esc_html_e($noPostErr, 'moreOrLess'); ?></h1>
+											esc_html_e($noPostErr, 'lessReimagined'); ?></h1>
 						</article>
 
 					<?php endif; ?>
@@ -150,7 +150,7 @@
 								<div class="post-meta">
 									<?php if (comments_open()) : ?>
 										<span class="comments-link">
-											<?php comments_popup_link(__('Comment', 'moreOrLess'), __('1 Comment', 'moreOrLess'), __('% Comments', 'moreOrLess')); ?>
+											<?php comments_popup_link(__('Comment', 'lessReimagined'), __('1 Comment', 'lessReimagined'), __('% Comments', 'lessReimagined')); ?>
 										</span>
 									<?php endif; ?>
 
@@ -158,7 +158,7 @@
 								<!--/post-meta -->
 
 								<div class="the-content">
-									<?php the_content(__('Continue...', 'moreOrLess')); ?>
+									<?php the_content(__('Continue...', 'lessReimagined')); ?>
 
 									<?php wp_link_pages(); ?>
 								</div><!-- the-content -->
@@ -183,7 +183,7 @@
 					<?php else : ?>
 
 						<article class="post error">
-							<h1 class="404"><?php esc_html_e($noPostErr, 'moreOrLess'); ?></h1>
+							<h1 class="404"><?php esc_html_e($noPostErr, 'lessReimagined'); ?></h1>
 						</article>
 
 					<?php endif; ?>
@@ -221,7 +221,7 @@
 					<?php else : ?>
 
 						<article class="post error">
-							<h1 class="404"><?php esc_html_e($noPostErr, 'moreOrLess'); ?></h1>
+							<h1 class="404"><?php esc_html_e($noPostErr, 'lessReimagined'); ?></h1>
 						</article>
 
 					<?php endif; ?>
@@ -238,7 +238,7 @@
 				if (is_404()) {
 				?>
 					<article class="post error">
-						<h1 class="404"><?php esc_html_e($noPostErr, 'moreOrLess'); ?></h1>
+						<h1 class="404"><?php esc_html_e($noPostErr, 'lessReimagined'); ?></h1>
 					</article>
 				<?php } // end is_404(); 
 				?>
@@ -256,9 +256,9 @@
 
 	<footer class="site-footer" role="contentinfo">
 		<div class="site-info container">
-			<a href="https://wordpress.org/" title="<?php esc_html_e('A Semantic Personal Publishing Platform', 'moreOrLess'); ?>" rel="generator"><?php esc_html_e('Proudly powered by WordPress', 'moreOrLess'); ?></a>
-			<span class="sep"> <?php esc_html_e('and', 'moreOrLess'); ?> </span>
-			<?php esc_html_e('More or Less by Mohammad Anbarestany', 'moreOrLess'); ?>
+			<a href="https://wordpress.org/" title="<?php esc_html_e('A Semantic Personal Publishing Platform', 'lessReimagined'); ?>" rel="generator"><?php esc_html_e('Proudly powered by WordPress', 'lessReimagined'); ?></a>
+			<span class="sep"> <?php esc_html_e('and', 'lessReimagined'); ?> </span>
+			<?php esc_html_e('Less Reimagined by Mohammad Anbarestany', 'lessReimagined'); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon .site-footer -->
 

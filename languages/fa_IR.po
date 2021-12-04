@@ -85,8 +85,8 @@ msgid "and"
 msgstr "و"
 
 #: ../index.php:226
-msgid "More or Less by Mohammad Anbarestany"
-msgstr "قالب کم و بیش توسعه یافته توسط محمد عنبرستانی"
+msgid "Less Reimagined by Mohammad Anbarestany"
+msgstr "قالب لس احیا شده توسعه یافته توسط محمد عنبرستانی"
 
 #~ msgid "LESS by Jared Erickson"
 #~ msgstr "لِس نوشته شده توسط جارد اریکسون"

@@ -3,9 +3,9 @@
 /*-----------------------------------------------------------------------------------*/
 /* Load Theme textdomain
 /*-----------------------------------------------------------------------------------*/
-add_action( 'after_setup_theme', 'moreOrLess_theme_setup' );
-function moreOrLess_theme_setup(){
-    load_theme_textdomain( 'moreOrLess', get_template_directory() . '/languages' );
+add_action( 'after_setup_theme', 'lessReimagined_theme_setup' );
+function lessReimagined_theme_setup(){
+    load_theme_textdomain( 'lessReimagined', get_template_directory() . '/languages' );
 }
 
 // Define the version as a constant, so we can easily replace it throughout the theme
@@ -15,7 +15,7 @@ add_theme_support( 'title-tag' );
 /*-----------------------------------------------------------------------------------*/
 /* Custom Logo - <span> has removed from has_custom_logo() output.
 /*-----------------------------------------------------------------------------------*/
-function moreOrLess_custom_logo_setup() {
+function lessReimagined_custom_logo_setup() {
     $defaults = array(
         'height'               => 100,
         'width'                => 100,
@@ -27,7 +27,7 @@ function moreOrLess_custom_logo_setup() {
 
     add_theme_support( 'custom-logo', $defaults );
 }
-add_action( 'after_setup_theme', 'moreOrLess_custom_logo_setup' );
+add_action( 'after_setup_theme', 'lessReimagined_custom_logo_setup' );
 
 function change_custom_logo( $html ) {
     $html = str_replace( '<span class="custom-logo-link">', '', $html );
@@ -53,7 +53,7 @@ if ( ! isset( $content_width ) ) {
 /*-----------------------------------------------------------------------------------*/
 register_nav_menus( 
 	array(
-		'primary'	=>	__( 'Primary Menu', 'moreOrLess' ),
+		'primary'	=>	__( 'Primary Menu', 'lessReimagined' ),
 	)
 );
 
@@ -90,7 +90,7 @@ function less_pingback_header() {
 add_action( 'wp_head', 'less_pingback_header' );
 
 /*-----------------------------------------------------------------------------------*/
-/* Dark theme fuctions - use: $_SERVER['REMOTE_ADDR']
+/* Dark theme functions - use: $_SERVER['REMOTE_ADDR']
 /*-----------------------------------------------------------------------------------*/
 
 function FILTER_FLAG_NO_LOOPBACK_RANGE($value)

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: More or Less\n"
+"Project-Id-Version: Less Reimagined\n"
 "POT-Creation-Date: 2021-11-09 23:27+0330\n"
 "PO-Revision-Date: 2021-11-09 23:28+0330\n"
 "Last-Translator: \n"
@@ -90,15 +90,15 @@ msgid "and"
 msgstr ""
 
 #: index.php:242
-msgid "More or Less by Mohammad Anbarestany"
+msgid "Less Reimagined by Mohammad Anbarestany"
 msgstr ""
 
 #. Theme Name of the plugin/theme
-msgid "More or Less"
+msgid "Less Reimagined"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "https://github.com/qasedak/More-or-Less/"
+msgid "https://github.com/qasedak/Less-Reimagined"
 msgstr ""
 
 #. Description of the plugin/theme
