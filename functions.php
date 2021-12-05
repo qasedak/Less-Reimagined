@@ -3,9 +3,9 @@
 /*-----------------------------------------------------------------------------------*/
 /* Load Theme textdomain
 /*-----------------------------------------------------------------------------------*/
-add_action( 'after_setup_theme', 'lessReimagined_theme_setup' );
-function lessReimagined_theme_setup(){
-    load_theme_textdomain( 'lessReimagined', get_template_directory() . '/languages' );
+add_action( 'after_setup_theme', 'less_reimagined_theme_setup' );
+function less_reimagined_theme_setup(){
+    load_theme_textdomain( 'less-reimagined', get_template_directory() . '/languages' );
 }
 
 // Define the version as a constant, so we can easily replace it throughout the theme
@@ -15,7 +15,7 @@ add_theme_support( 'title-tag' );
 /*-----------------------------------------------------------------------------------*/
 /* Custom Logo - <span> has removed from has_custom_logo() output.
 /*-----------------------------------------------------------------------------------*/
-function lessReimagined_custom_logo_setup() {
+function less_reimagined_custom_logo_setup() {
     $defaults = array(
         'height'               => 100,
         'width'                => 100,
@@ -27,7 +27,7 @@ function lessReimagined_custom_logo_setup() {
 
     add_theme_support( 'custom-logo', $defaults );
 }
-add_action( 'after_setup_theme', 'lessReimagined_custom_logo_setup' );
+add_action( 'after_setup_theme', 'less_reimagined_custom_logo_setup' );
 
 function change_custom_logo( $html ) {
     $html = str_replace( '<span class="custom-logo-link">', '', $html );
@@ -53,7 +53,7 @@ if ( ! isset( $content_width ) ) {
 /*-----------------------------------------------------------------------------------*/
 register_nav_menus( 
 	array(
-		'primary'	=>	__( 'Primary Menu', 'lessReimagined' ),
+		'primary'	=>	__( 'Primary Menu', 'less-reimagined' ),
 	)
 );
 
