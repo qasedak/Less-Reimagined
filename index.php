@@ -2,15 +2,16 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <?php
+	<?php
 	$color_scheme = $_COOKIE["color_scheme"] ?? false;
-	if (isNight($_SERVER['REMOTE_ADDR'],$color_scheme)) {
+	if ($color_scheme == "dark") {
 		echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
-        echo '<meta name="theme-color" content="#0d0d0d">';
+		echo '<meta name="theme-color" content="#0d0d0d">';
 	} else {
-        echo '<meta name="theme-color" content="#D0D0D0FF">';
-    }
+		echo '<meta name="theme-color" content="#D0D0D0FF">';
+	}
 	?>
+
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<meta name="viewport" content="width=device-width" />
 
@@ -20,13 +21,13 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php
-if ( function_exists( 'wp_body_open' ) ) {
-    wp_body_open();
-} else {
-    do_action( 'wp_body_open' );
-}
-?>
+	<?php
+	if (function_exists('wp_body_open')) {
+		wp_body_open();
+	} else {
+		do_action('wp_body_open');
+	}
+	?>
 
 
 	<?php
@@ -40,13 +41,13 @@ if ( function_exists( 'wp_body_open' ) ) {
 
 			<div class="gravatar">
 				<?php
-                if ( has_custom_logo() ) {
-                    the_custom_logo();
-                } else {
-                    // grab admin email and their photo
-                    $admin_email = get_option('admin_email');
-                    echo get_avatar($admin_email, 100);
-                }
+				if (has_custom_logo()) {
+					the_custom_logo();
+				} else {
+					// grab admin email and their photo
+					$admin_email = get_option('admin_email');
+					echo get_avatar($admin_email, 100);
+				}
 				?>
 			</div>
 			<!--/ author -->
@@ -128,7 +129,7 @@ if ( function_exists( 'wp_body_open' ) ) {
 					<?php else : ?>
 
 						<article class="post error">
-                            <h1 class="404"><?php esc_html_e( 'Nothing posted yet', 'less-reimagined' ); ?></h1>
+							<h1 class="404"><?php esc_html_e('Nothing posted yet', 'less-reimagined'); ?></h1>
 						</article>
 
 					<?php endif; ?>
@@ -269,23 +270,49 @@ if ( function_exists( 'wp_body_open' ) ) {
 	</footer><!-- #colophon .site-footer -->
 
 	<?php wp_footer(); ?>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script>
-    <script>
-        // code to set the `color_scheme` cookie
-        const $color_scheme = Cookies.get("color_scheme");
-        function get_color_scheme() {
-            return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-        }
-        function update_color_scheme() {
-            Cookies.set("color_scheme", get_color_scheme());
-        }
-        // read & compare cookie `color-scheme`
-        if ((typeof $color_scheme === "undefined") || (get_color_scheme() !== $color_scheme))
-            update_color_scheme();
-        // detect changes and change the cookie
-        if (window.matchMedia)
-            window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", update_color_scheme );
-    </script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script>
+	<script>
+		// code to set the `color_scheme` cookie
+		const $color_scheme = Cookies.get("color_scheme");
+
+		function get_color_scheme() {
+			return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+		}
+
+		function update_color_scheme() {
+			Cookies.set("color_scheme", get_color_scheme());
+		}
+		// read & compare cookie `color-scheme`
+		if ((typeof $color_scheme === "undefined") || (get_color_scheme() !== $color_scheme))
+			update_color_scheme();
+		// detect changes and change the cookie
+		if (window.matchMedia)
+			window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", update_color_scheme);
+		// get clinet's time
+		if (!$color_scheme) {
+			let uTime = new Date();
+			let dark = false;
+			if (uTime.getHours() >= 18 || uTime.getHours() <= 5) {
+				dark = true;
+				document.cookie = "cScheme=false; SameSite=Lax; path=/";
+			}
+		} else {
+			document.cookie = "cScheme=true; SameSite=Lax; path=/";
+		}
+		function getCookie(name) {
+			const value = `; ${document.cookie}`;
+			const parts = value.split(`; ${name}=`);
+			if (parts.length === 2) return parts.pop().split(';').shift();
+		}
+		if (getCookie("cScheme") == "false") {
+			var head = document.getElementsByTagName('HEAD')[0];
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = '<?php echo get_template_directory_uri(); ?>/dark.css';
+			head.appendChild(link);
+		}
+	</script>
 </body>
 
 </html>
