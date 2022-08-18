@@ -598,7 +598,7 @@ article .meta .post-categories li {
 }
 /* Comments */
 h3#comments {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   font-size: 16px;
 }
 .commentlist {
@@ -606,8 +606,8 @@ h3#comments {
   margin: 0;
 }
 .commentlist .comment {
-  margin: 0 0 40px 50px;
-  padding: 20px;
+  margin: 0;
+  padding: 0 20px 0 20px;
   position: relative;
   list-style: none;
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
@@ -615,7 +615,7 @@ h3#comments {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 .commentlist .comment .children {
-  margin-top: 40px;
+  margin-top: 25px;
 }
 .commentlist .comment-author {
   float: left;
@@ -623,8 +623,8 @@ h3#comments {
 }
 .commentlist .comment-author img {
   position: absolute;
-  left: -50px;
-  top: 5px;
+  left: -25px;
+  top: 7px;
 }
 .commentlist .comment-author .says {
   display: none;
@@ -646,6 +646,9 @@ h3#comments {
 }
 #respond form label {
   color: #888888;
+}
+#reply-title {
+  margin-top: 20px;
 }
 footer {
   text-align: center;

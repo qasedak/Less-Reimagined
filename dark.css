@@ -16,10 +16,39 @@ header #brand h1 a {
 header #brand h1 span {
     color: #d4d4d4 !important;
 }
+article .title {
+    color: #d4d4d4 !important;
+}
 .site-info.container {
     color: #5d5c5c;
 }
 .error {
     text-align: center;
     color: #878787;
+}
+/* comments */
+#reply-title,
+#comments {
+    color: #d4d4d4 !important;
+}
+
+p {
+    color: #d4d4d4;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background: #848484 !important;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    color: ;
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+    background: #4b4b4b;
+    color: #bebebe;
 }
