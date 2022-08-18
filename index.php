@@ -3,12 +3,20 @@
 
 <head>
 	<?php
+	$dark = '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css"><meta name="theme-color" content="#0d0d0d">';
+	$light = '<meta name="theme-color" content="#D0D0D0FF">';
+	$static_color = get_theme_mod( 'dark_mod' );
 	$color_scheme = $_COOKIE["color_scheme"] ?? false;
-	if ($color_scheme == "dark") {
-		echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/dark.css">';
-		echo '<meta name="theme-color" content="#0d0d0d">';
+	if ($static_color == "auto" || empty($static_color)) {
+		if ($color_scheme == "dark") {
+			echo $dark;
+		} else {
+			echo $light;
+		}
+	} else if ($static_color == "dark") {
+		echo $dark;
 	} else {
-		echo '<meta name="theme-color" content="#D0D0D0FF">';
+		echo $light;
 	}
 	?>
 
@@ -291,9 +299,7 @@
 		// get clinet's time
 		if (!$color_scheme) {
 			let uTime = new Date();
-			let dark = false;
 			if (uTime.getHours() >= 18 || uTime.getHours() <= 5) {
-				dark = true;
 				document.cookie = "cScheme=false; SameSite=Lax; path=/";
 			}
 		} else {
@@ -304,6 +310,8 @@
 			const parts = value.split(`; ${name}=`);
 			if (parts.length === 2) return parts.pop().split(';').shift();
 		}
+		<?php if ($static_color == "auto") { ?>
+
 		if (getCookie("cScheme") == "false") {
 			var head = document.getElementsByTagName('HEAD')[0];
 			var link = document.createElement('link');
@@ -312,6 +320,8 @@
 			link.href = '<?php echo get_template_directory_uri(); ?>/dark.css';
 			head.appendChild(link);
 		}
+		
+		<?php } ?>
 	</script>
 </body>
 

@@ -88,3 +88,8 @@ function less_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'less_pingback_header' );
+
+/**
+* theme options additions.
+*/
+require get_template_directory() . '/inc/options.php';
