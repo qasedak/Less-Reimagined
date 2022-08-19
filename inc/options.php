@@ -12,6 +12,7 @@ function dark_mod_settings($wp_customize)
         array(
             'type' => 'radio',
             'label' => __( 'Dark Mode', 'less-reimagined' ),
+            'description' => __('choose Auto if you want system to switch automatically base on time and browser settings.' , 'less-reimagined'),
             'section' => 'colors',
             'settings' => 'dark_mod',
             'choices'        => array(
